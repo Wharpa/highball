@@ -43,6 +43,32 @@ const diamond = (function() {
         .filter(b => b.classList.contains(targetClass))
         //not foreach
         .forEach(function (b) {
+        
+        if (b.classList == clickedTargetClassList) {
+          //this dom element is the ball that was clicked.
+            if (clickedTargetClassList.contains('neutral')) {
+              b.classList.add('active');
+              b.classList.remove('neutral');
+              return;
+            }
+            if (!clickedTargetClassList.contains('neutral')){
+              b.classList.remove('active');
+              b.classList.remove('inactive');
+              b.classList.remove('dead');
+              b.classList.add('neutral');
+              return;
+          }
+        }
+        else {
+          //this is the opposite dom element
+            b.classList.add('inactive');
+            b.classList.remove('neutral');
+            b.classList.remove('active');
+            return;
+        }
+
+
+/*
         //for clicked ball, activate it and deactivate its opponent equivalent
         if (clickedTargetClassList.contains('neutral')){
           if (clickedTargetClassList.contains('left')){
@@ -71,7 +97,7 @@ const diamond = (function() {
             ev.target.classList.add('neutral');
             return;
           }
-        }        
+        }  */      
         
         
 //          if (b.classList.contains('neutral') && b.classList.contains('left')) {

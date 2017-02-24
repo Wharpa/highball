@@ -127,21 +127,21 @@ var diamond = function () {
         if (b.classList == clickedTargetClassList) {
           //this dom element is the ball that was clicked.
           if (clickedTargetClassList.contains('neutral')) {
-            b.classList.add('active');
-            b.classList.remove('neutral');
+            ev.target.classList.add('active');
+            ev.target.classList.remove('neutral');
             return;
           }
           if (!clickedTargetClassList.contains('neutral')) {
-            b.classList.remove('active');
-            b.classList.remove('inactive');
-            b.classList.remove('dead');
-            b.classList.add('neutral');
+            ev.target.classList.remove('active');
+            ev.target.classList.remove('inactive');
+            ev.target.classList.remove('dead');
+            ev.target.classList.add('neutral');
             return;
           }
         } else {
           //this is the opposite dom element
-          b.classList.add('inactive');
-          b.classList.remove('neutral');
+          ev.target.classList.add('inactive');
+          ev.target.classList.remove('neutral');
           return;
         }
 
