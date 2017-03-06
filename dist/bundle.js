@@ -412,6 +412,11 @@ var scoring = function () {
             }
             return;
           }
+          //end of match checker
+          if (playerOneScore.innerHTML == playerOneGoal.innerHTML) {
+            console.log('end of match, player one wins');
+            endOfMatch(1);
+          }
           return;
         }
         if (evTarget.classList.contains('active')) {
@@ -443,6 +448,11 @@ var scoring = function () {
               resetRack.showRackButtons();
             }
             return;
+          }
+          //end of match checker
+          if (playerTwoScore.innerHTML == playerTwoGoal.innerHTML) {
+            console.log('end of match, player two wins');
+            endOfMatch(2);
           }
           return;
         }
@@ -527,6 +537,62 @@ var scoring = function () {
         break;
     }
   });
+
+  var endOfMatch = function endOfMatch(winningPlayer) {
+    var playerOneName = document.querySelector('#player-1-Name');
+    var playerTwoName = document.querySelector('#player-2-Name');
+    var playerOneSkillVal = document.querySelector('.skill-level.left option:checked').value;
+    var playerTwoSkillVal = document.querySelector('.skill-level.right option:checked').value;
+
+    //console.log(playerOneScore.innerHTML + " - " + playerTwoScore.innerHTML)
+    if (winningPlayer == 1) {
+      console.log("Final Score: " + calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML));
+    }
+    if (winningPlayer == 2) {
+      console.log("Final Score: " + calculateFinalScore(playerOneSkillVal, playerOneScore.innerHTML));
+    }
+  };
+
+  var calculateFinalScore = function calculateFinalScore(loserSL, loserScore) {
+    switch (loserSL) {
+      case '1':
+        switch (loserScore) {
+          case '0':
+          case '1':
+          case '2':
+            return "20-0";
+            break;
+          case '3':
+            return "19-1";
+            break;
+          case '4':
+            return "18-2";
+            break;
+          case '5':
+          case '6':
+            return "17-3";
+            break;
+          case '7':
+            return "16-4";
+            break;
+          case '8':
+            return "15-5";
+            break;
+          case '9':
+          case '10':
+            return "14-6";
+            break;
+          case '11':
+            return "13-7";
+            break;
+          case '12':
+          case '13':
+            return "12-8";
+            break;
+        }
+        break;
+    }
+  };
 }();
 
 module.exports = scoring;
