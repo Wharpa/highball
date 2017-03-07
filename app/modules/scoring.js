@@ -180,14 +180,20 @@ const scoring = (function() {
             playerTwoName = "Player Two";
         }
 
-        //console.log(playerOneScore.innerHTML + " - " + playerTwoScore.innerHTML)
+        let inningsTable = document.querySelectorAll('.innings-table') || 0;
+        var inningsTotal = 0;
+        for (var i = 0; i < inningsTable.length; i++) {
+            inningsTotal += Number(inningsTable[i].innerHTML);
+        }
+        inningsTotal += Number(document.querySelector(".number-innings").innerHTML)
+
         if (winningPlayer == 1) {
             let matchScore = calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML);
-            alert(playerOneName + " wins! Final score: " + matchScore.winnerScore + " - " + matchScore.loserScore);
+            alert(playerOneName + " wins! Match Points Earned: " + matchScore.winnerScore + " - " + matchScore.loserScore + " | Total Innings: " + inningsTotal);
         }
         if (winningPlayer == 2) {
             let matchScore = calculateFinalScore(playerOneSkillVal, playerOneScore.innerHTML);
-            alert(playerTwoName + " wins! Final score: " + matchScore.winnerScore + " - " + matchScore.loserScore);
+            alert(playerTwoName + " wins! Match Points Earned: " + matchScore.winnerScore + " - " + matchScore.loserScore + " | Total Innings: " + inningsTotal);
 
         }
     };

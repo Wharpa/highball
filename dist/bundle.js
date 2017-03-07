@@ -307,7 +307,7 @@ var rackTable = function () {
     if (ev.target.classList.contains('neutral')) {
       createCell(table.rows[0].insertCell(table.rows[0].cells.length), rackNumber.innerHTML, 'label');
       createCell(table.rows[1].insertCell(table.rows[1].cells.length), playerOneScore.innerHTML, 'col-' + 1);
-      createCell(table.rows[2].insertCell(table.rows[2].cells.length), innings.innerHTML, 'col-' + 1);
+      createCell(table.rows[2].insertCell(table.rows[2].cells.length), innings.innerHTML, 'innings-table col-' + 1);
       createCell(table.rows[3].insertCell(table.rows[3].cells.length), deadBalls.innerHTML, 'dead-ball-table');
       createCell(table.rows[4].insertCell(table.rows[4].cells.length), playerTwoScore.innerHTML, 'col-' + 1);
     } else {
@@ -551,14 +551,20 @@ var scoring = function () {
             playerTwoName = "Player Two";
         }
 
-        //console.log(playerOneScore.innerHTML + " - " + playerTwoScore.innerHTML)
+        var inningsTable = document.querySelectorAll('.innings-table') || 0;
+        var inningsTotal = 0;
+        for (var i = 0; i < inningsTable.length; i++) {
+            inningsTotal += Number(inningsTable[i].innerHTML);
+        }
+        inningsTotal += Number(document.querySelector(".number-innings").innerHTML);
+
         if (winningPlayer == 1) {
             var matchScore = calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML);
-            alert(playerOneName + " wins! Final score: " + matchScore.winnerScore + " - " + matchScore.loserScore);
+            alert(playerOneName + " wins! Match Points Earned: " + matchScore.winnerScore + " - " + matchScore.loserScore + " | Total Innings: " + inningsTotal);
         }
         if (winningPlayer == 2) {
             var _matchScore = calculateFinalScore(playerOneSkillVal, playerOneScore.innerHTML);
-            alert(playerTwoName + " wins! Final score: " + _matchScore.winnerScore + " - " + _matchScore.loserScore);
+            alert(playerTwoName + " wins! Match Points Earned: " + _matchScore.winnerScore + " - " + _matchScore.loserScore + " | Total Innings: " + inningsTotal);
         }
     };
 
