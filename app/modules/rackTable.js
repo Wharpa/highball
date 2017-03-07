@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const resetRack = require('./resetRack');
 
 const rackTable = (function () {

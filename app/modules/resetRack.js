@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const resetRack = (function() {
   const nineBall = document.querySelectorAll('.ball-9');
   var rack = document.querySelector('.rack');
@@ -8,11 +9,11 @@ const resetRack = (function() {
   
   const showRackButtons = function() {
     rackButtons.classList.remove('hidden');
-  }
+  };
   
   const hideRackButtons = function() {
     rackButtons.classList.add('hidden');
-  }
+  };
   
   const resetRack = function() {
     for (let i = 0; i < ballArray.length; i++) {
@@ -21,16 +22,16 @@ const resetRack = (function() {
       ballArray[i].classList.remove('dead');
       ballArray[i].classList.add('neutral');
     }
-  }
+  };
   
   const resetInnings = function() {
     const innings = document.querySelector('.number-innings');
     innings.innerHTML = 0;
-  }
+  };
   
   const resetDeadBalls = function() {
     deadBallScore.innerHTML = 0;
-  }
+  };
   
   document.body.addEventListener('click', function(ev) {
     if (ev.target.classList.contains('next-rack')) {
@@ -45,7 +46,7 @@ const resetRack = (function() {
   return {
     showRackButtons: showRackButtons,
     hideRackButtons: hideRackButtons
-  }
+  };
 
 })();
 

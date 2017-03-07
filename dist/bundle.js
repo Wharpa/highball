@@ -73,6 +73,7 @@
 "use strict";
 
 
+/*jshint esversion: 6 */
 var resetRack = function () {
   var nineBall = document.querySelectorAll('.ball-9');
   var rack = document.querySelector('.rack');
@@ -246,18 +247,21 @@ module.exports = diamond;
 "use strict";
 
 
+/*jshint esversion: 6 */
 var incrementer = function () {
   var incrementButton = document.querySelectorAll('.increment');
   var decrementButton = document.querySelectorAll('.decrement');
+  var number = "";
+  var numberHtml = "";
 
   var counter = function counter(increment, context) {
     if (increment) {
-      var number = context.target.previousElementSibling;
-      var numberHtml = number.innerHTML;
+      number = context.target.previousElementSibling;
+      numberHtml = number.innerHTML;
       numberHtml++;
     } else {
-      var number = context.target.nextElementSibling;
-      var numberHtml = number.innerHTML;
+      number = context.target.nextElementSibling;
+      numberHtml = number.innerHTML;
       if (numberHtml === '0') {
         return;
       }
@@ -283,6 +287,7 @@ module.exports = incrementer;
 "use strict";
 
 
+/*jshint esversion: 6 */
 var resetRack = __webpack_require__(0);
 
 var rackTable = function () {
@@ -403,9 +408,13 @@ var scoring = function () {
             // If ballLeft
             if (evTarget.classList.contains('left')) {
                 if (evTarget.classList.contains('neutral')) {
-                    playerOneScore.innerHTML = increase(new Number(playerOneScore.innerHTML));
+                    playerOneScore.innerHTML = increase(Number(playerOneScore.innerHTML));
+                    //end of match checker
+                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
+                        endOfMatch(1);
+                    }
                     if (evTarget.classList.contains('ball-9')) {
-                        playerOneScore.innerHTML = increase(new Number(playerOneScore.innerHTML));
+                        playerOneScore.innerHTML = increase(Number(playerOneScore.innerHTML));
                         var currentScore = calcScore();
                         if (currentScore % 10 === 0) {
                             rackTable.appendColumn(ev);
@@ -413,24 +422,20 @@ var scoring = function () {
                         }
                         return;
                     }
-                    //end of match checker
-                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
-                        endOfMatch(1);
-                    }
                     return;
                 }
                 if (evTarget.classList.contains('active')) {
-                    playerOneScore.innerHTML = decrease(new Number(playerOneScore.innerHTML));
+                    playerOneScore.innerHTML = decrease(Number(playerOneScore.innerHTML));
                     if (evTarget.classList.contains('ball-9')) {
-                        playerOneScore.innerHTML = decrease(new Number(playerOneScore.innerHTML));
+                        playerOneScore.innerHTML = decrease(Number(playerOneScore.innerHTML));
                         return;
                     }
                     return;
                 }
                 if (evTarget.classList.contains('inactive')) {
-                    playerTwoScore.innerHTML = decrease(new Number(playerTwoScore.innerHTML));
+                    playerTwoScore.innerHTML = decrease(Number(playerTwoScore.innerHTML));
                     if (evTarget.classList.contains('ball-9')) {
-                        playerTwoScore.innerHTML = decrease(new Number(playerTwoScore.innerHTML));
+                        playerTwoScore.innerHTML = decrease(Number(playerTwoScore.innerHTML));
                         return;
                     }
                     return;
@@ -439,9 +444,9 @@ var scoring = function () {
             // If ballRight
             if (evTarget.classList.contains('right')) {
                 if (evTarget.classList.contains('neutral')) {
-                    playerTwoScore.innerHTML = increase(new Number(playerTwoScore.innerHTML));
+                    playerTwoScore.innerHTML = increase(Number(playerTwoScore.innerHTML));
                     if (evTarget.classList.contains('ball-9')) {
-                        playerTwoScore.innerHTML = increase(new Number(playerTwoScore.innerHTML));
+                        playerTwoScore.innerHTML = increase(Number(playerTwoScore.innerHTML));
                         var _currentScore = calcScore();
                         if (_currentScore % 10 === 0) {
                             rackTable.appendColumn(ev);
@@ -456,17 +461,17 @@ var scoring = function () {
                     return;
                 }
                 if (evTarget.classList.contains('active')) {
-                    playerTwoScore.innerHTML = decrease(new Number(playerTwoScore.innerHTML));
+                    playerTwoScore.innerHTML = decrease(Number(playerTwoScore.innerHTML));
                     if (evTarget.classList.contains('ball-9')) {
-                        playerTwoScore.innerHTML = decrease(new Number(playerTwoScore.innerHTML));
+                        playerTwoScore.innerHTML = decrease(Number(playerTwoScore.innerHTML));
                         return;
                     }
                     return;
                 }
                 if (evTarget.classList.contains('inactive')) {
-                    playerOneScore.innerHTML = decrease(new Number(playerOneScore.innerHTML));
+                    playerOneScore.innerHTML = decrease(Number(playerOneScore.innerHTML));
                     if (evTarget.classList.contains('ball-9')) {
-                        playerOneScore.innerHTML = decrease(new Number(playerOneScore.innerHTML));
+                        playerOneScore.innerHTML = decrease(Number(playerOneScore.innerHTML));
                         return;
                     }
                 }
