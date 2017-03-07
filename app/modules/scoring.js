@@ -43,8 +43,7 @@ const scoring = (function() {
                         return;
                     }
                     //end of match checker
-                    if (playerOneScore.innerHTML == playerOneGoal.innerHTML) {
-                        console.log('end of match, player one wins');
+                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
                         endOfMatch(1);
                     }
                     return;
@@ -80,8 +79,7 @@ const scoring = (function() {
                         return;
                     }
                     //end of match checker
-                    if (playerTwoScore.innerHTML == playerTwoGoal.innerHTML) {
-                        console.log('end of match, player two wins');
+                    if (Number(playerTwoScore.innerHTML) >= Number(playerTwoGoal.innerHTML)) {
                         endOfMatch(2);
                     }
                     return;
@@ -168,11 +166,11 @@ const scoring = (function() {
         }
     });
 
-    const endOfMatch = function(winningPlayer) {
+    let endOfMatch = function(winningPlayer) {
         let playerOneName = document.querySelector('#player-1-Name').innerHTML.toString();
         let playerTwoName = document.querySelector('#player-2-Name').innerHTML.toString();
-        const playerOneSkillVal = document.querySelector('.skill-level.left option:checked').value;
-        const playerTwoSkillVal = document.querySelector('.skill-level.right option:checked').value;
+        let playerOneSkillVal = document.querySelector('.skill-level.left option:checked').value;
+        let playerTwoSkillVal = document.querySelector('.skill-level.right option:checked').value;
 
         if (!playerOneName) {
             playerOneName = "Player One";
@@ -184,17 +182,17 @@ const scoring = (function() {
 
         //console.log(playerOneScore.innerHTML + " - " + playerTwoScore.innerHTML)
         if (winningPlayer == 1) {
-            const matchScore = calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML);
+            let matchScore = calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML);
             alert(playerOneName + " wins! Final score: " + matchScore.winnerScore + " - " + matchScore.loserScore);
         }
         if (winningPlayer == 2) {
-            const matchScore = calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML);
+            let matchScore = calculateFinalScore(playerOneSkillVal, playerOneScore.innerHTML);
             alert(playerTwoName + " wins! Final score: " + matchScore.winnerScore + " - " + matchScore.loserScore);
 
         }
     };
 
-    const calculateFinalScore = function(loserSL, loserScore) {
+    let calculateFinalScore = function(loserSL, loserScore) {
         switch (loserSL) {
             case '1':
                 switch (loserScore) {

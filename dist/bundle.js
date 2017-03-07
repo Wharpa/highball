@@ -414,8 +414,7 @@ var scoring = function () {
                         return;
                     }
                     //end of match checker
-                    if (playerOneScore.innerHTML == playerOneGoal.innerHTML) {
-                        console.log('end of match, player one wins');
+                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
                         endOfMatch(1);
                     }
                     return;
@@ -451,8 +450,7 @@ var scoring = function () {
                         return;
                     }
                     //end of match checker
-                    if (playerTwoScore.innerHTML == playerTwoGoal.innerHTML) {
-                        console.log('end of match, player two wins');
+                    if (Number(playerTwoScore.innerHTML) >= Number(playerTwoGoal.innerHTML)) {
                         endOfMatch(2);
                     }
                     return;
@@ -559,7 +557,7 @@ var scoring = function () {
             alert(playerOneName + " wins! Final score: " + matchScore.winnerScore + " - " + matchScore.loserScore);
         }
         if (winningPlayer == 2) {
-            var _matchScore = calculateFinalScore(playerTwoSkillVal, playerTwoScore.innerHTML);
+            var _matchScore = calculateFinalScore(playerOneSkillVal, playerOneScore.innerHTML);
             alert(playerTwoName + " wins! Final score: " + _matchScore.winnerScore + " - " + _matchScore.loserScore);
         }
     };
