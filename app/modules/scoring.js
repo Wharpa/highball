@@ -165,45 +165,252 @@ const endOfMatch = function(winningPlayer) {
   }
 }
 
+//I wasn't sure if we wanted to do a string with the final score or do an object literal in case we want to actually track this data at some point. went with the objec literal so it's less re-work later.
 const calculateFinalScore = function(loserSL, loserScore) {
 switch (loserSL) {
-    case '1':
+    case 1:
         switch (loserScore) {
-            case '0':
-            case '1':
-            case '2':
-                return "20-0";
+            case 0:
+            case 1:
+            case 2:
+                return {
+                    winnerScore: 20,
+                    loserScore: 0
+                }
                 break;
-            case '3':
-                return "19-1";
+            case 3:
+                return {
+                    winnerScore: 19,
+                    loserScore: 1
+                }
                 break;
-            case '4':
-                return "18-2";
+            case 4:
+                return {
+                    winnerScore: 18,
+                    loserScore: 2
+                }
                 break;
-            case '5':
-            case '6':
-                return "17-3";
+            case 5:
+            case 6:
+                return {
+                    winnerScore: 17,
+                    loserScore: 3
+                }
                 break;
-            case '7':
-                return "16-4";
+            case 7:
+                return {
+                    winnerScore: 16,
+                    loserScore: 4
+                }
                 break;
-            case '8':
-                return "15-5";
-                break;                
-            case '9':
-            case '10':
-                return "14-6";
+            case 8:
+                return {
+                    winnerScore: 15,
+                    loserScore: 5
+                }
                 break;
-            case '11':
-                return "13-7";
+            case 9:
+            case 10:
+                return {
+                    winnerScore: 14,
+                    loserScore: 6
+                }
                 break;
-            case '12':
-            case '13':
-                return "12-8";
+            case 11:
+                return {
+                    winnerScore: 13,
+                    loserScore: 7
+                }
+                break;
+            case 12:
+            case 13:
+                return {
+                    winnerScore: 12,
+                    loserScore: 8
+                }
                 break;
         }
         break;
+    case 2:
+        switch (loserScore) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+                return {
+                    winnerScore: 20,
+                    loserScore: 0
+                }
+                break;
+            case 4:
+            case 5:
+                return {
+                    winnerScore: 19,
+                    loserScore: 1
+                }
+                break;
+            case 6:
+            case 7:
+                return {
+                    winnerScore: 18,
+                    loserScore: 2
+                }
+                break;
+            case 8:
+                return {
+                    winnerScore: 17,
+                    loserScore: 3
+                }
+                break;
+            case 9:
+            case 10:
+                return {
+                    winnerScore: 16,
+                    loserScore: 4
+                }
+                break;
+            case 11:
+            case 12:
+                return {
+                    winnerScore: 15,
+                    loserScore: 5
+                }
+                break;
+            case 13:
+            case 14:
+                return {
+                    winnerScore: 14,
+                    loserScore: 6
+                }
+                break;
+            case 15:
+            case 16:
+                return {
+                    winnerScore: 13,
+                    loserScore: 7
+                }
+                break;
+            case 17:
+            case 18:
+                return {
+                    winnerScore: 12,
+                    loserScore: 8
+                }
+                break;
+        }
+        break;
+    case 3:
+    //nested cases on individual score
+    switch (loserScore) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                return {
+                    winnerScore: 20,
+                    loserScore: 0
+                }
+                break;
+            case 5:
+            case 6:
+                return {
+                    winnerScore: 19,
+                    loserScore: 1
+                }
+                break;
+            case 7:
+            case 8:
+            case 9:
+                return {
+                    winnerScore: 18,
+                    loserScore: 2
+                }
+                break;
+            case 10:
+            case 11:
+                return {
+                    winnerScore: 17,
+                    loserScore: 3
+                }
+                break;
+            case 12:
+            case 13:
+            case 14:
+                return {
+                    winnerScore: 16,
+                    loserScore: 4
+                }
+                break;
+            case 15:
+            case 16:
+                return {
+                    winnerScore: 15,
+                    loserScore: 5
+                }
+                break;
+            case 17:
+            case 18:
+            case 19:
+                return {
+                    winnerScore: 14,
+                    loserScore: 6
+                }
+                break;
+            case 20:
+            case 21:
+                return {
+                    winnerScore: 13,
+                    loserScore: 7
+                }
+                break;
+            case 22:
+            case 23:
+            case 24:
+                return {
+                    winnerScore: 12,
+                    loserScore: 8
+                }
+                break;
+        }
+    break;
+
+    case 4:
+    //nested cases on individual score
+    switch (loserScore) {
+    }
+    break;
+    case 5:
+    //nested cases on individual score
+    switch (loserScore) {
+    }
+    break;
+    case 6:
+    //nested cases on individual score
+    switch (loserScore) {
+    }
+    break;
+    case 7:
+    //nested cases on individual score
+    switch (loserScore) {
+    }
+    break;
+    case 8:
+    //nested cases on individual score
+    switch (loserScore) {
+    }
+    break;
+    case 9:
+    //nested cases on individual score
+    switch (loserScore) {
+    }
+    break;
+
+
 }
+
+
 }
 })();
 
