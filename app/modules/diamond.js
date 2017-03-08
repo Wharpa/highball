@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const scoring = require('./scoring');
 
 const diamond = (function() {
@@ -22,8 +23,8 @@ const diamond = (function() {
         ballArray
           .filter(b => b.classList.contains(targetClass))
           .forEach(b => {
-            b.classList.add('dead')
-            b.classList.remove('neutral')
+            b.classList.add('dead');
+            b.classList.remove('neutral');
             
         });
       } else if(deadBallTarget.classList.contains('dead')) {  
@@ -32,15 +33,15 @@ const diamond = (function() {
         ballArray
           .filter(b => b.classList.contains(targetClass))
           .forEach(b => {
-            b.classList.remove('dead')
-            b.classList.add('neutral')
-      })
+            b.classList.remove('dead');
+            b.classList.add('neutral');
+      });
       ev.target.click(); //this is a really stupid temporary fix. please don't let this live for very long.
 
       }
     let deadBalls = document.querySelectorAll('.left-grid .dead');
     deadBallScore.innerHTML = deadBalls.length;      
-    })
+    });
     
     // Active / Inactive
     ball[i].addEventListener('click', function(ev) {
@@ -98,7 +99,7 @@ const diamond = (function() {
         clickedTargetClassList.add('neutral');
         return;        
       }
-    })
+    });
   }
 })();
 

@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 const resetRack = require('./resetRack');
 
 const rackTable = (function () {
@@ -22,9 +23,10 @@ const rackTable = (function () {
     if (ev.target.classList.contains('neutral')) {
       createCell(table.rows[0].insertCell(table.rows[0].cells.length), rackNumber.innerHTML, 'label');
       createCell(table.rows[1].insertCell(table.rows[1].cells.length), playerOneScore.innerHTML, 'col-' + 1);
-      createCell(table.rows[2].insertCell(table.rows[2].cells.length), innings.innerHTML, 'col-' + 1);
+      createCell(table.rows[2].insertCell(table.rows[2].cells.length), innings.innerHTML, 'innings-table col-' + 1);
       createCell(table.rows[3].insertCell(table.rows[3].cells.length), deadBalls.innerHTML, 'dead-ball-table');
       createCell(table.rows[4].insertCell(table.rows[4].cells.length), playerTwoScore.innerHTML, 'col-' + 1);
+      portraitTable(playerOneScore.innerHTML, innings.innerHTML, deadBalls.innerHTML, playerTwoScore.innerHTML);
     } else {
       deleteColumn();
     }
@@ -63,9 +65,17 @@ const rackTable = (function () {
     resetRack.hideRackButtons();
   });
 
+  const portraitTable = function(p1Score, innings, dead, p2score) {
+    const portraitParent = document.querySelector('.screen-portrait');
+    let portraitContents = "";
+    portraitContents += '<div class="view"><div class="last-rack-column"><div class="portrait-Score">'+p1Score+'</div><div class="portrait-Score">'+innings+'</div><div class="portrait-Score">'+dead+'</div><div class="portrait-Score">'+p2score+'</div></div>';
+    portraitParent.innerHTML = portraitContents;
+
+  };
+
   return {
     appendColumn: appendColumn,
-    deleteColumn: deleteColumn
+    deleteColumn: deleteColumn,
   };
 })();
 
