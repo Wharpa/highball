@@ -33,10 +33,6 @@ const scoring = (function() {
             if (evTarget.classList.contains('left')) {
                 if (evTarget.classList.contains('neutral')) {
                     playerOneScore.innerHTML = increase(Number(playerOneScore.innerHTML));
-                    //end of match checker
-                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
-                        endOfMatch(1);
-                    }
                     if (evTarget.classList.contains('ball-9')) {
                         playerOneScore.innerHTML = increase(Number(playerOneScore.innerHTML));
                         let currentScore = calcScore();
@@ -45,6 +41,10 @@ const scoring = (function() {
                             resetRack.showRackButtons();
                         }
                         return;
+                    }
+                    //end of match checker
+                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
+                        endOfMatch(1);
                     }
                     return;
                 }
@@ -100,6 +100,10 @@ const scoring = (function() {
                     }
                 }
             }
+            //end of match checker
+                    if (Number(playerTwoScore.innerHTML) >= Number(playerTwoGoal.innerHTML)) {
+                        endOfMatch(2);
+                    }
         });
     }
 

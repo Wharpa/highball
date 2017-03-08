@@ -315,6 +315,7 @@ var rackTable = function () {
       createCell(table.rows[2].insertCell(table.rows[2].cells.length), innings.innerHTML, 'innings-table col-' + 1);
       createCell(table.rows[3].insertCell(table.rows[3].cells.length), deadBalls.innerHTML, 'dead-ball-table');
       createCell(table.rows[4].insertCell(table.rows[4].cells.length), playerTwoScore.innerHTML, 'col-' + 1);
+      portraitTable(playerOneScore.innerHTML, innings.innerHTML, deadBalls.innerHTML, playerTwoScore.innerHTML);
     } else {
       deleteColumn();
     }
@@ -354,6 +355,13 @@ var rackTable = function () {
     nineBallsNeutral();
     resetRack.hideRackButtons();
   });
+
+  var portraitTable = function portraitTable(p1Score, innings, dead, p2score) {
+    var portraitParent = document.querySelector('.screen-portrait');
+    var portraitContents = "";
+    portraitContents += '<div class="view"><div class="last-rack-column"><div class="portrait-Score">' + p1Score + '</div><div class="portrait-Score">' + innings + '</div><div class="portrait-Score">' + dead + '</div><div class="portrait-Score">' + p2score + '</div></div>';
+    portraitParent.innerHTML = portraitContents;
+  };
 
   return {
     appendColumn: appendColumn,
@@ -409,10 +417,6 @@ var scoring = function () {
             if (evTarget.classList.contains('left')) {
                 if (evTarget.classList.contains('neutral')) {
                     playerOneScore.innerHTML = increase(Number(playerOneScore.innerHTML));
-                    //end of match checker
-                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
-                        endOfMatch(1);
-                    }
                     if (evTarget.classList.contains('ball-9')) {
                         playerOneScore.innerHTML = increase(Number(playerOneScore.innerHTML));
                         var currentScore = calcScore();
@@ -421,6 +425,10 @@ var scoring = function () {
                             resetRack.showRackButtons();
                         }
                         return;
+                    }
+                    //end of match checker
+                    if (Number(playerOneScore.innerHTML) >= Number(playerOneGoal.innerHTML)) {
+                        endOfMatch(1);
                     }
                     return;
                 }
@@ -475,6 +483,10 @@ var scoring = function () {
                         return;
                     }
                 }
+            }
+            //end of match checker
+            if (Number(playerTwoScore.innerHTML) >= Number(playerTwoGoal.innerHTML)) {
+                endOfMatch(2);
             }
         });
     }
