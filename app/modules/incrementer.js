@@ -6,6 +6,9 @@ const incrementer = (function(){
   let numberHtml = "";
   
   const counter = (increment, context) => {
+    if (document.querySelector("#controlsActive").value == "false") {
+          return;
+      }
     if (increment) {
       number = context.target.previousElementSibling;
       numberHtml = number.innerHTML;

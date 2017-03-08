@@ -40,11 +40,15 @@ const diamond = (function() {
 
       }
     let deadBalls = document.querySelectorAll('.left-grid .dead');
-    deadBallScore.innerHTML = deadBalls.length;      
+    deadBallScore.innerHTML = deadBalls.length;     
     });
     
     // Active / Inactive
     ball[i].addEventListener('click', function(ev) {
+
+      if (document.querySelector("#controlsActive").value == "false") {
+          return;
+      }
       const evTarget = ev.target;
       const clickedTargetClassList = evTarget.classList;
       const ballLeft = ball[i].classList.contains('left');
@@ -57,6 +61,7 @@ const diamond = (function() {
         opposite.classList.remove('neutral');
         opposite.classList.add('inactive');
         clickedTargetClassList.add('active');
+        scoring.scoringFunction(ev); 
         return;
       }
       if (ballLeft && clickedTargetClassList.contains('active')) {
@@ -81,6 +86,7 @@ const diamond = (function() {
         opposite.classList.remove('neutral');
         opposite.classList.add('inactive');
         clickedTargetClassList.add('active');
+        scoring.scoringFunction(ev); 
         return;
       }
       if (ballRight && clickedTargetClassList.contains('active')) {

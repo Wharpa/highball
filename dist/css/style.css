@@ -315,3 +315,7 @@ th.label {
   justify-content: center;
   font-weight: bold;
 }
+
+#controlsActive {
+  visibility: hidden;
+}

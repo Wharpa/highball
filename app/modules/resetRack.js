@@ -9,10 +9,12 @@ const resetRack = (function() {
   
   const showRackButtons = function() {
     rackButtons.classList.remove('hidden');
+    document.querySelector("#controlsActive").value = "false";
   };
   
   const hideRackButtons = function() {
     rackButtons.classList.add('hidden');
+    document.querySelector("#controlsActive").value = "true";
   };
   
   const resetRack = function() {
